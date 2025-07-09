@@ -1,64 +1,51 @@
 
 import { useState } from 'react';
-import { Search, Bell, User, Menu, X } from 'lucide-react';
+import { Globe, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-gradient-to-b from-black/80 to-transparent">
-      <div className="flex items-center justify-between px-4 md:px-8 py-4">
+    <header className="absolute top-0 w-full z-50 px-4 md:px-8 lg:px-16">
+      <div className="flex items-center justify-between py-4 md:py-6">
         {/* Logo */}
-        <div className="flex items-center space-x-8">
+        <div className="flex items-center">
           <h1 className="text-red-600 text-2xl md:text-3xl font-bold">NETFLIX</h1>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Home</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">TV Shows</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Movies</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">New & Popular</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">My List</a>
-          </nav>
         </div>
 
-        {/* Right side icons */}
+        {/* Right side - Language selector and Sign In */}
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon" className="text-white hover:text-gray-300">
-            <Search className="h-5 w-5" />
-          </Button>
-          <Button variant="ghost" size="icon" className="text-white hover:text-gray-300">
-            <Bell className="h-5 w-5" />
-          </Button>
-          <Button variant="ghost" size="icon" className="text-white hover:text-gray-300">
-            <User className="h-5 w-5" />
-          </Button>
-          
-          {/* Mobile menu button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {/* Language Selector */}
+          <div className="relative">
+            <Button
+              variant="ghost"
+              className="text-white border border-white/50 hover:bg-white/10 px-3 py-1 text-sm"
+              onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+            >
+              <Globe className="h-4 w-4 mr-2" />
+              English
+              <ChevronDown className="h-4 w-4 ml-2" />
+            </Button>
+            
+            {isLanguageOpen && (
+              <div className="absolute top-full mt-1 bg-black/90 border border-white/20 rounded-md py-2 min-w-[120px]">
+                <button className="block w-full text-left px-4 py-2 text-white hover:bg-white/10 text-sm">
+                  English
+                </button>
+                <button className="block w-full text-left px-4 py-2 text-white hover:bg-white/10 text-sm">
+                  اردو
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Sign In Button */}
+          <Button className="bg-red-600 text-white hover:bg-red-700 px-4 py-2 text-sm font-medium">
+            Sign In
           </Button>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-black/95 px-4 py-4">
-          <nav className="flex flex-col space-y-4">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Home</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">TV Shows</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">Movies</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">New & Popular</a>
-            <a href="#" className="text-white hover:text-gray-300 transition-colors">My List</a>
-          </nav>
-        </div>
-      )}
     </header>
   );
 };
