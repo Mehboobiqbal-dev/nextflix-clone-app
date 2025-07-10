@@ -8,49 +8,49 @@ const TrendingNow = () => {
     {
       id: 1,
       title: "Squid Game",
-      image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=300&fit=crop",
+      image: "https://upload.wikimedia.org/wikipedia/en/f/f9/Squid_Game_poster.jpg",
       number: 1
     },
     {
       id: 2,
       title: "RRR",
-      image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&h=300&fit=crop",
+      image: "https://upload.wikimedia.org/wikipedia/en/d/d7/RRR_Poster.jpg",
       number: 2
     },
     {
       id: 3,
-      title: "The Great Indian Kapil Show",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+      title: "Wednesday",
+      image: "https://upload.wikimedia.org/wikipedia/en/3/35/Wednesday_Netflix_series_poster.jpg",
       number: 3
     },
     {
       id: 4,
-      title: "The Old Guard 2",
-      image: "https://images.unsplash.com/photo-1594736797933-d0811ba44667?w=400&h=300&fit=crop",
+      title: "The Old Guard",
+      image: "https://upload.wikimedia.org/wikipedia/en/3/31/The_Old_Guard_poster.jpg",
       number: 4
     },
     {
       id: 5,
       title: "Money Heist",
-      image: "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&h=300&fit=crop",
+      image: "https://upload.wikimedia.org/wikipedia/en/e/e9/Money_Heist_season_1_poster.jpg",
       number: 5
     },
     {
       id: 6,
       title: "Stranger Things",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+      image: "https://upload.wikimedia.org/wikipedia/commons/3/38/Stranger_Things_logo.png",
       number: 6
     },
     {
       id: 7,
       title: "The Crown",
-      image: "https://images.unsplash.com/photo-1594736797933-d0811ba44667?w=400&h=300&fit=crop",
+      image: "https://upload.wikimedia.org/wikipedia/en/8/8f/The_Crown_season_1_poster.jpg",
       number: 7
     },
     {
       id: 8,
       title: "Ozark",
-      image: "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&h=300&fit=crop",
+      image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Ozark_season_1_poster.jpg",
       number: 8
     }
   ];
