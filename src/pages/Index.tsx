@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import TrendingNow from '../components/TrendingNow';
 import MoreReasonsToJoin from '../components/MoreReasonsToJoin';
 import FrequentlyAskedQuestions from '../components/FrequentlyAskedQuestions';
+import Footer from '../components/Footer';
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <TrendingNow />
       <MoreReasonsToJoin />
       <FrequentlyAskedQuestions />
+      <Footer />
     </div>
   );
 };
