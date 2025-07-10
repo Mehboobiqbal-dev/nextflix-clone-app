@@ -17,7 +17,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/b6dd2c41-c904-43af-a834-e47c76ca0306.png')`,
+          backgroundImage: `url('https://assets.nflxext.com/ffe/siteui/vlv3/7d2359a4-434f-4efa-9ff3-e9d38a8bde7f/web/PK-en-20250707-TRIFECTA-perspective_8df60425-904b-4752-bea2-1d1979861e23_large.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-black/60" />

@@ -1,5 +1,7 @@
+
 import { ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const TrendingNow = () => {
   const trendingMovies = [
@@ -32,6 +34,24 @@ const TrendingNow = () => {
       title: "Money Heist",
       image: "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&h=300&fit=crop",
       number: 5
+    },
+    {
+      id: 6,
+      title: "Stranger Things",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+      number: 6
+    },
+    {
+      id: 7,
+      title: "The Crown",
+      image: "https://images.unsplash.com/photo-1594736797933-d0811ba44667?w=400&h=300&fit=crop",
+      number: 7
+    },
+    {
+      id: 8,
+      title: "Ozark",
+      image: "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?w=400&h=300&fit=crop",
+      number: 8
     }
   ];
 
@@ -45,22 +65,28 @@ const TrendingNow = () => {
           </Button>
         </div>
         
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-          {trendingMovies.map((movie) => (
-            <div key={movie.id} className="relative min-w-[280px] cursor-pointer group">
-              <div className="relative">
-                <img
-                  src={movie.image}
-                  alt={movie.title}
-                  className="w-full h-40 object-cover rounded-lg transition-transform group-hover:scale-105"
-                />
-                <div className="absolute -bottom-4 -left-4 text-8xl font-black text-white/20 group-hover:text-white/40 transition-colors">
-                  {movie.number}
+        <Carousel className="w-full">
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {trendingMovies.map((movie) => (
+              <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                <div className="relative cursor-pointer group">
+                  <div className="relative">
+                    <img
+                      src={movie.image}
+                      alt={movie.title}
+                      className="w-full h-40 object-cover rounded-lg transition-transform group-hover:scale-105"
+                    />
+                    <div className="absolute -bottom-4 -left-4 text-8xl font-black text-white/20 group-hover:text-white/40 transition-colors">
+                      {movie.number}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-2 bg-black/50 border-white/20 text-white hover:bg-black/70" />
+          <CarouselNext className="right-2 bg-black/50 border-white/20 text-white hover:bg-black/70" />
+        </Carousel>
       </div>
     </div>
   );
