@@ -26,36 +26,36 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl">
-        <div className="animate-fade-in-up">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+        <div>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight animate-fade-in-up">
             Unlimited movies, TV shows, and more
           </h1>
           
-          <p className="text-lg md:text-xl lg:text-2xl text-white mb-4 font-medium">
+          <p className="text-lg md:text-xl lg:text-2xl text-white mb-4 font-medium animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             Starts at Rs 250. Cancel anytime.
           </p>
           
-          <p className="text-base md:text-lg lg:text-xl text-white mb-8">
+          <p className="text-base md:text-lg lg:text-xl text-white mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             Ready to watch? Enter your email to create or restart your membership.
           </p>
           
           {/* Email Signup Form */}
-          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             <div className="flex-1">
               <Input
                 type="email"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-12 md:h-14 text-base md:text-lg bg-black/70 border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:bg-black/50"
+                className="h-12 md:h-14 text-base md:text-lg bg-black/70 border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:bg-black/50 hover-lift"
               />
             </div>
             <Button
               onClick={handleGetStarted}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base md:text-lg h-12 md:h-14 px-6 md:px-8"
+              className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base md:text-lg h-12 md:h-14 px-6 md:px-8 animate-glow hover-scale"
             >
               Get Started
-              <ChevronRight className="h-5 w-5 ml-2" />
+              <ChevronRight className="h-5 w-5 ml-2 animate-float" />
             </Button>
           </div>
         </div>
