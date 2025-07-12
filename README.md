@@ -1,73 +1,247 @@
-# Welcome to your Lovable project
+# Modern Streaming Platform
 
-## Project info
+A modern, responsive streaming platform built with React, TypeScript, and Framer Motion. This project provides a customizable foundation for creating Netflix-like streaming services with beautiful animations and motion effects.
 
-**URL**: https://lovable.dev/projects/1a6b6a1e-2216-48b1-be1f-71bce3e785be
+## ✨ Features
 
-## How can I edit this code?
+- **🎬 Modern UI/UX**: Clean, responsive design with smooth animations
+- **🎭 Motion Effects**: Framer Motion animations throughout the interface
+- **⚙️ Highly Configurable**: Easy customization for different brands and themes
+- **📱 Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **🎨 Theme Support**: Dynamic color schemes and branding
+- **🌍 Multi-language**: Built-in language selector support
+- **🚀 Performance Optimized**: Fast loading with Vite and optimized animations
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Production-ready motion library
+- **Shadcn/ui** - Beautiful, accessible components
+- **Lucide React** - Beautiful icons
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1a6b6a1e-2216-48b1-be1f-71bce3e785be) and start prompting.
+## 🚀 Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ 
+- npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd modern-streaming-platform
+   ```
 
-Follow these steps:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. **Open your browser**
+   Navigate to `http://localhost:5173`
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🎨 Customization
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Brand Configuration
+
+The app is highly configurable through the `src/config/app.ts` file. You can easily switch between different brand configurations:
+
+```typescript
+// Switch to Netflix branding
+export const currentConfig: AppConfig = netflixConfig;
+
+// Switch to Disney+ branding  
+export const currentConfig: AppConfig = disneyConfig;
+
+// Use custom configuration
+export const currentConfig: AppConfig = {
+  name: "NETFLIX",
+  logo: "NETFLIX",
+  primaryColor: "#FF6B35",
+  // ... other custom settings
+};
 ```
 
-**Edit a file directly in GitHub**
+### Available Configurations
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **NETFLIX** (default) - Generic streaming platform
+- **Netflix** - Netflix-inspired design
+- **Disney+** - Disney+ inspired design
 
-**Use GitHub Codespaces**
+### Customizing Sections
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Each section can be customized independently:
 
-## What technologies are used for this project?
+```typescript
+sections: {
+  trending: {
+    title: "Trending Now",
+    showViewAll: true
+  },
+  popular: {
+    title: "Popular on NETFLIX", 
+    showViewAll: false
+  }
+}
+```
 
-This project is built with:
+### Feature Toggles
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Control which features are displayed:
 
-## How can I deploy this project?
+```typescript
+features: {
+  showLanguageSelector: true,
+  showSignIn: true,
+  showEmailSignup: true
+}
+```
 
-Simply open [Lovable](https://lovable.dev/projects/1a6b6a1e-2216-48b1-be1f-71bce3e785be) and click on Share -> Publish.
+## 🎭 Motion Effects
 
-## Can I connect a custom domain to my Lovable project?
+The app includes several pre-built animation variants:
 
-Yes, you can!
+- **fadeInUp** - Elements fade in from bottom
+- **fadeInLeft/Right** - Elements slide in from sides
+- **scaleIn** - Elements scale up from 0
+- **cardHover** - Card hover effects
+- **staggerContainer** - Staggered child animations
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Adding New Animations
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Create new animations in `src/lib/motion.ts`:
+
+```typescript
+export const customAnimation: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ui/            # Shadcn/ui components
+│   ├── Header.tsx     # Navigation header
+│   ├── Hero.tsx       # Hero section
+│   ├── TrendingNow.tsx # Movie carousel
+│   └── ...
+├── config/
+│   └── app.ts         # App configuration
+├── data/
+│   └── movieData.ts   # Sample movie data
+├── lib/
+│   ├── motion.ts      # Animation variants
+│   └── utils.ts       # Utility functions
+└── pages/
+    ├── Index.tsx      # Main page
+    └── NotFound.tsx   # 404 page
+```
+
+## 🎬 Adding Content
+
+### Movies and Shows
+
+Add your content to `src/data/movieData.ts`:
+
+```typescript
+export const movieData = {
+  trending: [
+    {
+      id: 1,
+      title: "Your Movie Title",
+      image: "https://your-image-url.com/image.jpg",
+      rating: "95",
+      year: "2024",
+      genre: "Action"
+    }
+  ]
+};
+```
+
+### Hero Section
+
+Customize the hero section in the config:
+
+```typescript
+hero: {
+  title: "Your Hero Title",
+  subtitle: "Your subtitle text",
+  description: "Your description text",
+  backgroundImage: "https://your-background.jpg",
+  ctaText: "Get Started",
+  emailPlaceholder: "Email address"
+}
+```
+
+## 🚀 Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Deploy to Vercel
+
+1. Install Vercel CLI: `npm i -g vercel`
+2. Run: `vercel`
+3. Follow the prompts
+
+### Deploy to Netlify
+
+1. Build the project: `npm run build`
+2. Drag the `dist` folder to Netlify
+3. Or connect your GitHub repository
+
+## 🎯 Performance Tips
+
+- **Lazy Loading**: Components load animations only when in viewport
+- **Optimized Images**: Use WebP format for better performance
+- **Motion Reduction**: Respect user's motion preferences
+- **Bundle Splitting**: Vite automatically optimizes bundle size
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Framer Motion](https://www.framer.com/motion/) for amazing animations
+- [Shadcn/ui](https://ui.shadcn.com/) for beautiful components
+- [Tailwind CSS](https://tailwindcss.com/) for utility-first styling
+- [Lucide](https://lucide.dev/) for beautiful icons
+
+---
+
+Made with ❤️ and lots of ☕

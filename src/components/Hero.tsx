@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { motion } from 'framer-motion';
+import { fadeInUp, slideInFromBottom, staggerContainer } from '@/lib/motion';
+import { currentConfig } from '@/config/app';
 
 const Hero = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +20,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://assets.nflxext.com/ffe/siteui/vlv3/7d2359a4-434f-4efa-9ff3-e9d38a8bde7f/web/PK-en-20250707-TRIFECTA-perspective_8df60425-904b-4752-bea2-1d1979861e23_large.jpg')`,
+          backgroundImage: `url('${currentConfig.hero.backgroundImage}')`,
         }}
       >
         <div className="absolute inset-0 bg-black/60" />
@@ -25,41 +28,70 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl">
-        <div>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight animate-fade-in-up">
-            Unlimited movies, TV shows, and more
-          </h1>
+      <motion.div 
+        className="relative z-10 text-center px-4 md:px-8 max-w-4xl"
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+      >
+        <motion.div variants={fadeInUp}>
+          <motion.h1 
+            className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight"
+            variants={slideInFromBottom}
+          >
+            {currentConfig.hero.title}
+          </motion.h1>
           
-          <p className="text-lg md:text-xl lg:text-2xl text-white mb-4 font-medium animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Starts at Rs 250. Cancel anytime.
-          </p>
+          <motion.p 
+            className="text-lg md:text-xl lg:text-2xl text-white mb-4 font-medium"
+            variants={fadeInUp}
+          >
+            {currentConfig.hero.subtitle}
+          </motion.p>
           
-          <p className="text-base md:text-lg lg:text-xl text-white mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            Ready to watch? Enter your email to create or restart your membership.
-          </p>
+          <motion.p 
+            className="text-base md:text-lg lg:text-xl text-white mb-8"
+            variants={fadeInUp}
+          >
+            {currentConfig.hero.description}
+          </motion.p>
           
           {/* Email Signup Form */}
-          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <div className="flex-1">
-              <Input
-                type="email"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-12 md:h-14 text-base md:text-lg bg-black/70 border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:bg-black/50 hover-lift"
-              />
-            </div>
-            <Button
-              onClick={handleGetStarted}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base md:text-lg h-12 md:h-14 px-6 md:px-8 animate-glow hover-scale"
-            >
-              Get Started
-              <ChevronRight className="h-5 w-5 ml-2 animate-float" />
-            </Button>
-          </div>
-        </div>
-      </div>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
+            variants={fadeInUp}
+          >
+            {currentConfig.features.showEmailSignup && (
+              <>
+                <div className="flex-1">
+                  <Input
+                    type="email"
+                    placeholder={currentConfig.hero.emailPlaceholder}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="h-12 md:h-14 text-base md:text-lg bg-black/70 border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:bg-black/50 hover-lift"
+                  />
+                </div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    onClick={handleGetStarted}
+                    className="text-white font-semibold text-base md:text-lg h-12 md:h-14 px-6 md:px-8"
+                    style={{ backgroundColor: currentConfig.primaryColor }}
+                  >
+                    {currentConfig.hero.ctaText}
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <ChevronRight className="h-5 w-5 ml-2" />
+                    </motion.div>
+                  </Button>
+                </motion.div>
+              </>
+            )}
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
