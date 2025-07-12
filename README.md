@@ -33,8 +33,8 @@ A modern, responsive streaming platform built with React, TypeScript, and Framer
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd modern-streaming-platform
+   git clone (https://github.com/Mehboobiqbal-dev/nextflix-clone-app)>
+   cd netlfix-clone-app
    ```
 
 2. **Install dependencies**
